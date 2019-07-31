@@ -26,7 +26,8 @@ function e -d "explore"
         set list *
         set sel (command ls -lLd . .. $list \
             | fzf --prompt=(prompt_pwd)"> " --nth=9.. --no-clear \
-            | awk '{ print substr($0, index($0, $9)) }')
+            | awk '{ for (i=9; i<NF; i++) printf("%s ", $i); print($NF) }')
+            # consider the filename contains whitespace characters
         if test -z "$sel"
             # Press Ctrl-C
             set ret 1
