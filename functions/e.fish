@@ -49,7 +49,7 @@ function e -d "explore"
                 set ret $status
             else
                 begin
-                    open "$sel" ^&1
+                    open "$sel" 2>&1
                     set ret $status
                 end | read msg
             end
